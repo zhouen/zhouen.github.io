@@ -3,3 +3,4 @@ description: GitHub Pages for En Zhou with Hacker theme applied.
 show_downloads: false
 google_analytics:
 theme: 
+markdown: kramdown
