@@ -1,5 +1,4 @@
 theme: jekyll-theme-midnight
 title: Welcome to  En Zhou's hub.
-markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
 
