@@ -1,4 +1,5 @@
+title: En Zhou's Hub
+description: En Zhou's Hub in Midnight theme for GitHub Pages.
+show_downloads: false
+google_analytics: true
 theme: jekyll-theme-midnight
-title: Welcome to  En Zhou's hub.
-permalink: /blog/:year/:month/:day/:title
-
