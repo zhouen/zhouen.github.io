@@ -7,6 +7,10 @@ Users are free to copy and re-use any and all of the code contained here without
 
 ## Start Site Locally
 ```bash
+$ gem install bundler
+$ sudo apt-get install ruby-dev
+$ sudo gem install commonmarker -v '0.17.13' --source 'https://rubygems.org/
+$ rm Gemfile.lock
 $ bundle install
-$ bundle exec jekyll serve
+$ bundle exec jekyll server
 ```
