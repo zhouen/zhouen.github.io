@@ -2,3 +2,12 @@ Gemfile.lock
 .idea/
 .sass-cache/
 _site/*
+.vscode/
+blog/.DS_Store
+blog/Thumbs.db
+blog/db.json
+blog/*.log
+blog/node_modules/
+blog/public/
+blog/.deploy*/%
+
