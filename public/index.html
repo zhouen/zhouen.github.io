@@ -224,6 +224,246 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://zhou-en.github.io/2019/10/02/Python-Datetime-Libs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="En Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="En's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/02/Python-Datetime-Libs/" class="post-title-link" itemprop="url">Python Datetime Libs</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-02 02:39:57 / Modified: 02:40:39" itemprop="dateCreated datePublished" datetime="2019-10-02T02:39:57+02:00">2019-10-02</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Python-Date-Time-Libries-pytz-dateutil-and-pendulum"><a href="#Python-Date-Time-Libries-pytz-dateutil-and-pendulum" class="headerlink" title="Python Date Time Libries: pytz, dateutil, and pendulum"></a>Python Date Time Libries: <code>pytz</code>, <code>dateutil</code>, and <code>pendulum</code></h3><p>Write a few paragraphs on converting UTC datetime to localized timezone datetime using the 3 libraries.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"><span class="keyword">import</span> dateutil</span><br><span class="line"><span class="keyword">import</span> pendulum</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test scenarios</span></span><br><span class="line"><span class="comment"># 1. Create a timezone free UTC version of now</span></span><br><span class="line"><span class="comment"># 2. Convert that to the following zones:</span></span><br><span class="line"><span class="comment"># - South Africa</span></span><br><span class="line"><span class="comment"># - US Eastern</span></span><br><span class="line"><span class="comment"># - US Pacific</span></span><br><span class="line"><span class="comment"># - Germany</span></span><br><span class="line"><span class="comment"># - Japan</span></span><br><span class="line"><span class="comment"># - India (Weird 30m offset)</span></span><br><span class="line"><span class="comment"># 3. Do the same for a specific time (2019/08/02 10:33:45+00:00)</span></span><br><span class="line"><span class="comment"># 3. Create a zoned UTC time on the edge of several DST switch overs</span></span><br><span class="line"><span class="comment"># 4. Check before and after times</span></span><br><span class="line"><span class="comment"># 6. Check what happens in the DST switch period (Sunday, November 3, 2:00 am LOCAL)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Some details on DST in the US: https://www.timeanddate.com/time/change/usa</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># fmt = '%Y-%m-%d %H:%M:%S.%f %Z%z'</span></span><br><span class="line">fmt = <span class="string">'%Y-%m-%d %H:%M:%S.%f %Z%z'</span></span><br><span class="line">utc_zone = <span class="string">'UTC'</span></span><br><span class="line">cat_zone = <span class="string">'Africa/Johannesburg'</span></span><br><span class="line">use_zone = <span class="string">'US/Eastern'</span></span><br><span class="line">ger_zone = <span class="string">'Europe/Berlin'</span></span><br><span class="line">tok_zone = <span class="string">'Asia/Tokyo'</span></span><br><span class="line">kol_zone = <span class="string">'Asia/Kolkata'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pytz_spike</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">'pytz'</span>)</span><br><span class="line">    print(<span class="string">'========'</span>)</span><br><span class="line">    <span class="comment"># Localize timezone free UTC now</span></span><br><span class="line">    now = datetime.datetime.utcnow()</span><br><span class="line"></span><br><span class="line">    utc = pytz.utc</span><br><span class="line">    cat = pytz.timezone(cat_zone)</span><br><span class="line">    use = pytz.timezone(use_zone)</span><br><span class="line">    ger = pytz.timezone(ger_zone)</span><br><span class="line">    tok = pytz.timezone(tok_zone)</span><br><span class="line">    kol = pytz.timezone(kol_zone)</span><br><span class="line"></span><br><span class="line">    utc_now = utc.localize(now)</span><br><span class="line">    cat_now = cat.localize(now)</span><br><span class="line">    use_now = use.localize(now)</span><br><span class="line">    ger_now = ger.localize(now)</span><br><span class="line">    tok_now = tok.localize(now)</span><br><span class="line">    kol_now = kol.localize(now)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'Localize timezone free now() to following timezone:'</span>)</span><br><span class="line">    print(utc_now.strftime(fmt))</span><br><span class="line">    print(cat_now.strftime(fmt))</span><br><span class="line">    print(use_now.strftime(fmt))</span><br><span class="line">    print(ger_now.strftime(fmt))</span><br><span class="line">    print(tok_now.strftime(fmt))</span><br><span class="line">    print(kol_now.strftime(fmt))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Localize a specific datetime, (2019/08/02 10:33:45+00:00)</span></span><br><span class="line">    target_date = datetime.datetime(<span class="number">2019</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">10</span>, <span class="number">33</span>, <span class="number">45</span>)</span><br><span class="line">    print(<span class="string">f'\nLocalize (2019/08/02 10:33:45+00:00) into following timezones:'</span>)</span><br><span class="line">    print(utc.localize(target_date).strftime(fmt))</span><br><span class="line">    print(cat.localize(target_date).strftime(fmt))</span><br><span class="line">    print(use.localize(target_date).strftime(fmt))</span><br><span class="line">    print(ger.localize(target_date).strftime(fmt))</span><br><span class="line">    print(tok.localize(target_date).strftime(fmt))</span><br><span class="line">    print(kol.localize(target_date).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Before DST</span></span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: 10 January 2019, 12:34:12'</span>)</span><br><span class="line">    use_before = datetime.datetime(<span class="number">2019</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">999999</span>)</span><br><span class="line">    print(use.localize(use_before).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">30</span>, <span class="number">59</span>, <span class="number">999999</span>)</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: 2019-03-10, 02:00:00 clocks were turned forward 1 hour '</span>)</span><br><span class="line">    print(<span class="string">'timezone only changes after 3:00'</span>)</span><br><span class="line">    print(use.localize(before_dst).strftime(fmt))</span><br><span class="line">    minutes_added = <span class="number">40</span></span><br><span class="line">    print(<span class="string">f'Add <span class="subst">&#123;minutes_added&#125;</span> minutes:'</span>)</span><br><span class="line">    print(use.localize(before_dst+timedelta(minutes=minutes_added)).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">59</span>, <span class="number">999999</span>)</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: 2019-11-3, 02:00:00 clocks are turned backward 1 hour '</span>)</span><br><span class="line">    print(<span class="string">'timezone only changes after 3:00'</span>)</span><br><span class="line">    print(use.localize(before_dst).strftime(fmt))</span><br><span class="line">    minutes_added = <span class="number">100</span></span><br><span class="line">    print(<span class="string">f'Add <span class="subst">&#123;minutes_added&#125;</span> minutes:'</span>)</span><br><span class="line">    print(use.localize(before_dst + timedelta(minutes=minutes_added)).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'\n'</span>+use.localize(before_dst).strftime(fmt))</span><br><span class="line">    minutes_added = <span class="number">40</span></span><br><span class="line">    print(<span class="string">f'Add <span class="subst">&#123;minutes_added&#125;</span> minutes:'</span>)</span><br><span class="line">    print(use.localize(before_dst + timedelta(minutes=minutes_added)).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    after_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">30</span>, <span class="number">59</span>, <span class="number">999999</span>)</span><br><span class="line">    print(<span class="string">f'After DST: <span class="subst">&#123;use.localize(after_dst).strftime(fmt)&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">python_dateutil_spike</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'\ndateutil'</span>)</span><br><span class="line">    print(<span class="string">'========'</span>)</span><br><span class="line">    utc = dateutil.tz.gettz(utc_zone)</span><br><span class="line">    use = dateutil.tz.gettz(use_zone)</span><br><span class="line">    ger = dateutil.tz.gettz(ger_zone)</span><br><span class="line">    tok = dateutil.tz.gettz(tok_zone)</span><br><span class="line">    kol = dateutil.tz.gettz(kol_zone)</span><br><span class="line"></span><br><span class="line">    mar_10th = datetime.datetime(<span class="number">2019</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">6</span>, <span class="number">30</span>, <span class="number">0</span>, <span class="number">0</span>, tzinfo=utc)</span><br><span class="line">    print(mar_10th.astimezone(utc).strftime(fmt))</span><br><span class="line">    print(mar_10th.astimezone(use).strftime(fmt) + <span class="string">f' <span class="subst">&#123;use_zone&#125;</span>'</span>)</span><br><span class="line">    minutes_added = <span class="number">40</span></span><br><span class="line">    print(<span class="string">f'Add <span class="subst">&#123;minutes_added&#125;</span> minutes'</span>)</span><br><span class="line">    mar_10th_updated = mar_10th + timedelta(minutes=minutes_added)</span><br><span class="line">    print(mar_10th_updated.astimezone(use).strftime(fmt) + <span class="string">f' <span class="subst">&#123;use_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pendulum_spike</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'\npendulum'</span>)</span><br><span class="line">    print(<span class="string">'========'</span>)</span><br><span class="line">    <span class="comment"># Localize timezone free UTC now</span></span><br><span class="line">    utc_now = pendulum.utcnow()</span><br><span class="line">    year = utc_now.year</span><br><span class="line">    month = utc_now.month</span><br><span class="line">    day = utc_now.day</span><br><span class="line">    hour = utc_now.hour</span><br><span class="line">    minute = utc_now.minute</span><br><span class="line">    second = utc_now.second</span><br><span class="line">    micro_sec = utc_now.microsecond</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Create datetime string, timezone free</span></span><br><span class="line"><span class="string">    Localize the time string by adding timezones </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    print(<span class="string">'Localize UTC time now'</span>)</span><br><span class="line">    utc = pendulum.datetime(year, month, day, hour, minute, second, micro_sec, tzinfo=utc_zone)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;utc.strftime(fmt)&#125;</span>  -\t<span class="subst">&#123;utc_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line">    cat = pendulum.datetime(year, month, day, hour, minute, second, micro_sec, tzinfo=cat_zone)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;cat.strftime(fmt)&#125;</span> -\t<span class="subst">&#123;cat_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line">    use = pendulum.datetime(year, month, day, hour, minute, second, micro_sec, tzinfo=use_zone)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;use.strftime(fmt)&#125;</span>  -\t<span class="subst">&#123;use_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line">    ger = pendulum.datetime(year, month, day, hour, minute, second, micro_sec, tzinfo=ger_zone)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;ger.strftime(fmt)&#125;</span> -\t<span class="subst">&#123;ger_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line">    tok = pendulum.datetime(year, month, day, hour, minute, second, micro_sec, tzinfo=tok_zone)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;tok.strftime(fmt)&#125;</span>  -\t<span class="subst">&#123;tok_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line">    kol = pendulum.datetime(year, month, day, hour, minute, second, micro_sec, tzinfo=kol_zone)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;kol.strftime(fmt)&#125;</span>  -\t<span class="subst">&#123;kol_zone&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">###############################################################################</span></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">3</span>, <span class="number">31</span>, <span class="number">1</span>, <span class="number">59</span>, <span class="number">59</span>, <span class="number">999999</span>)</span><br><span class="line">    ger = pendulum.datetime(</span><br><span class="line">        before_dst.year, before_dst.month, before_dst.day, before_dst.hour,</span><br><span class="line">        before_dst.minute, before_dst.second, before_dst.microsecond,</span><br><span class="line">        tzinfo=ger_zone</span><br><span class="line">    )</span><br><span class="line">    print(</span><br><span class="line">        <span class="string">f'\n<span class="subst">&#123;ger_zone&#125;</span>: '</span></span><br><span class="line">        <span class="string">f'Sunday, 31 March 2019, 02:00:00 clocks were turned forward 1 hour'</span></span><br><span class="line">    )</span><br><span class="line">    print(ger.strftime(fmt))</span><br><span class="line">    print(<span class="string">'Add 1 microsecond'</span>)</span><br><span class="line">    print(ger.add(microseconds=<span class="number">1</span>).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">10</span>, <span class="number">27</span>, <span class="number">1</span>, <span class="number">59</span>, <span class="number">59</span>, <span class="number">999999</span>)</span><br><span class="line">    ger = pendulum.datetime(</span><br><span class="line">        before_dst.year, before_dst.month, before_dst.day, before_dst.hour,</span><br><span class="line">        before_dst.minute, before_dst.second, before_dst.microsecond,</span><br><span class="line">        tzinfo=ger_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;ger_zone&#125;</span>: Sunday, 27 October 2019, 03:00:00 clocks are turned backward 1 hour'</span>)</span><br><span class="line">    print(ger.strftime(fmt))</span><br><span class="line">    print(<span class="string">f'Add 85 minutes to pass 3:00'</span>)</span><br><span class="line">    print(ger.add(minutes=<span class="number">85</span>).strftime(fmt))</span><br><span class="line"><span class="comment">###############################################################################</span></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">999999</span>)</span><br><span class="line">    use = pendulum.datetime(</span><br><span class="line">        before_dst.year, before_dst.month, before_dst.day, before_dst.hour,</span><br><span class="line">        before_dst.minute, before_dst.second, before_dst.microsecond,</span><br><span class="line">        tzinfo=use_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: 10 January 2019, 12:34:12'</span>)</span><br><span class="line">    print(use.strftime(fmt))</span><br><span class="line"></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">30</span>, <span class="number">59</span>, <span class="number">999999</span>)</span><br><span class="line">    use = pendulum.datetime(</span><br><span class="line">        before_dst.year, before_dst.month, before_dst.day, before_dst.hour,</span><br><span class="line">        before_dst.minute, before_dst.second, before_dst.microsecond,</span><br><span class="line">        tzinfo=use_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: Sunday, 10 March 2019, 02:00:00 clocks were turned forward 1 hour'</span>)</span><br><span class="line">    print(<span class="string">'Timezone starts changing after 2:00'</span>)</span><br><span class="line">    print(use.strftime(fmt))</span><br><span class="line">    minutes_added = <span class="number">40</span></span><br><span class="line">    print(<span class="string">f'Add <span class="subst">&#123;minutes_added&#125;</span> minutes:'</span>)</span><br><span class="line">    print(use.add(minutes=minutes_added).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    after_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">999999</span>)</span><br><span class="line">    use = pendulum.datetime(</span><br><span class="line">        after_dst.year, after_dst.month, after_dst.day, after_dst.hour,</span><br><span class="line">        after_dst.minute, after_dst.second, after_dst.microsecond,</span><br><span class="line">        tzinfo=use_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: 5 April 2019, 12:34:12'</span>)</span><br><span class="line">    print(use.strftime(fmt))</span><br><span class="line"></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">40</span>, <span class="number">00</span>, <span class="number">0</span>)</span><br><span class="line">    use = pendulum.datetime(</span><br><span class="line">        before_dst.year, before_dst.month, before_dst.day, before_dst.hour,</span><br><span class="line">        before_dst.minute, before_dst.second, before_dst.microsecond,</span><br><span class="line">        tzinfo=use_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: Sunday, 3 November 2019, 02:00:00 clocks are turned backward 1 hour '</span>)</span><br><span class="line">    print(use.strftime(fmt))</span><br><span class="line">    minutes_added = <span class="number">85</span></span><br><span class="line">    print(<span class="string">f'Add: <span class="subst">&#123;minutes_added&#125;</span> minutes'</span>)</span><br><span class="line">    print(use.add(minutes=minutes_added).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    before_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">40</span>, <span class="number">00</span>, <span class="number">0</span>)</span><br><span class="line">    use = pendulum.datetime(</span><br><span class="line">        before_dst.year, before_dst.month, before_dst.day, before_dst.hour,</span><br><span class="line">        before_dst.minute, before_dst.second, before_dst.microsecond,</span><br><span class="line">        tzinfo=use_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">'\n'</span> + use.strftime(fmt))</span><br><span class="line">    minutes_added = <span class="number">35</span></span><br><span class="line">    print(<span class="string">f'Add: <span class="subst">&#123;minutes_added&#125;</span> minutes'</span>)</span><br><span class="line">    print(use.add(minutes=minutes_added).strftime(fmt))</span><br><span class="line"></span><br><span class="line">    after_dst = datetime.datetime(<span class="number">2019</span>, <span class="number">11</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">44</span>, <span class="number">12</span>, <span class="number">999999</span>)</span><br><span class="line">    use = pendulum.datetime(</span><br><span class="line">        after_dst.year, after_dst.month, after_dst.day, after_dst.hour,</span><br><span class="line">        after_dst.minute, after_dst.second, after_dst.microsecond,</span><br><span class="line">        tzinfo=use_zone</span><br><span class="line">    )</span><br><span class="line">    print(<span class="string">f'\n<span class="subst">&#123;use_zone&#125;</span>: <span class="subst">&#123;use.strftime(fmt)&#125;</span>'</span>)</span><br><span class="line"><span class="comment">###############################################################################</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    pytz_spike()</span><br><span class="line">    python_dateutil_spike()</span><br><span class="line">    pendulum_spike()</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://zhou-en.github.io/2019/10/02/Deploy-A-Django-Service-to-a-Remote-VM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="En Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="En's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/02/Deploy-A-Django-Service-to-a-Remote-VM/" class="post-title-link" itemprop="url">Deploy A Django Service to a Remote VM</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-02 02:25:54 / Modified: 02:30:57" itemprop="dateCreated datePublished" datetime="2019-10-02T02:25:54+02:00">2019-10-02</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Create-an-User-on-remote-VM"><a href="#Create-an-User-on-remote-VM" class="headerlink" title="Create an User on remote VM"></a>Create an User on remote VM</h2><ol>
+<li>login to the remote vm</li>
+<li>run: <code>adduser username</code></li>
+<li>add password and details</li>
+<li>add the user to <code>sudo</code> group: <code>adduser username sudo</code></li>
+</ol>
+<h2 id="Update-remote-VM-hostname"><a href="#Update-remote-VM-hostname" class="headerlink" title="Update remote VM hostname"></a>Update remote VM hostname</h2><ol>
+<li>set new hostname: <code>hostnamectl set-hostname new_hostname</code></li>
+<li>update the <code>/etc/hosts</code> file:<ul>
+<li>open the file with <code>vim</code>: <code>vim /etc/hosts</code></li>
+<li>add this line <code>vm_ip_address  new_hostname</code> right below <code>127.0.0.1      localhost</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="Enable-ssh-Key-Based-Login"><a href="#Enable-ssh-Key-Based-Login" class="headerlink" title="Enable ssh Key Based Login"></a>Enable <code>ssh</code> Key Based Login</h2><ol start="0">
+<li>create a directory on the remote vm: <code>mkdir -p ~/.ssh</code></li>
+<li>generate ssh-key on local machine: <code>ssh-keygen -b 4096</code></li>
+<li>copy the public key to the remote vm: <code>scp ~/.ssh/id_rsa.pub username@remote_vm_ip:~/.ssh/authorized_keys</code></li>
+<li>login to the vm</li>
+<li>give <code>700</code> permission to the <code>.ssh</code> directory</li>
+<li>give <code>600</code> permissions to the contents inside <code>.ssh</code> directory</li>
+</ol>
+<h2 id="Update-ssh-Permissions"><a href="#Update-ssh-Permissions" class="headerlink" title="Update ssh Permissions"></a>Update <code>ssh</code> Permissions</h2><ol>
+<li>login to the remote vm</li>
+<li>open <code>/etc/ssh/sshd_config</code> with root access</li>
+<li>Set <code>PermitRootLogin</code> to <code>no</code></li>
+<li>Set <code>PasswordAuthentication</code> to <code>no</code></li>
+<li>Restart <code>ssh service</code>: <code>sudo systemctl restart sshd</code></li>
+</ol>
+<h2 id="Setup-Firewall-only-allow-incoming-traffic-on-port-8000-and-ssh"><a href="#Setup-Firewall-only-allow-incoming-traffic-on-port-8000-and-ssh" class="headerlink" title="Setup Firewall: only allow incoming traffic on port 8000 and ssh"></a>Setup Firewall: only allow incoming traffic on port 8000 and ssh</h2><ol>
+<li><code>sudo apt-get install ufw</code></li>
+<li><code>sudo ufw default allow outgoing</code></li>
+<li><code>sudo ufw default deny incoming</code></li>
+<li><code>sudo ufw allow ssh</code></li>
+<li><code>sudo ufw allow 8000</code></li>
+<li><code>sudo ufw enable</code>, yes</li>
+<li><code>sudo ufw status</code></li>
+</ol>
+<h2 id="Prep-Django-App-for-Deployment"><a href="#Prep-Django-App-for-Deployment" class="headerlink" title="Prep Django App for Deployment"></a>Prep Django App for Deployment</h2><ol>
+<li>activate virtual environment</li>
+<li>run <code>pip freeze &gt; requirements.txt</code> to create requirements file for the virtual enirment</li>
+<li>copy the project folder to the vm server</li>
+<li>install <code>sudo apt-get install python3-pip python3-venv</code> on the vm</li>
+<li>create virtual environment: <code>python3 -m venv django_project/venv</code></li>
+<li>activate the virtual environment</li>
+<li>install requirement: <code>pip install -r requirements.txt</code></li>
+</ol>
+<h2 id="Update-Django-Settings-in-settings-py"><a href="#Update-Django-Settings-in-settings-py" class="headerlink" title="Update Django Settings in settings.py"></a>Update Django Settings in <code>settings.py</code></h2><p>1.open <code>settings.py</code><br>2.update <code>ALLOWD_HOSTS</code> to include your VM’s IP<br>3.update <code>STATIC_ROOT = os.path.join(BASE_DIR, &#39;static&#39;)</code><br>4.run <code>python manage.py collectstatic</code> to create and copy static files to <code>static</code> directory<br>5.<code>python manage.py runserver 0.0.0.0:8000</code></p>
+<h2 id="Add-Django-Service-to-Apache"><a href="#Add-Django-Service-to-Apache" class="headerlink" title="Add Django Service to Apache"></a>Add Django Service to <code>Apache</code></h2><ol>
+<li><p>Install apache: <code>sudo apt install apache2</code></p>
+</li>
+<li><p>Install apache python lib: <code>sudo apt install libapache2-mod-wsgi-py3</code></p>
+</li>
+<li><p>Configure apache2 services in <code>/ect/apache2/sites-available</code></p>
+</li>
+<li><p>Make a copy of the config file in the config directory: <code>sudo cp 000-default.conf django_project.conf</code></p>
+</li>
+<li><p>Update the config file:</p>
+<ul>
+<li>Add rules right before <code>&lt;/VirtualHost&gt;</code>:  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Alias /static /home/username/django_project_dir/static</span><br><span class="line">&lt;Directory /home/username/django_project_dir/static&gt;</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">Alias /media /home/username/django_project_dir/media</span><br><span class="line">&lt;Directory /home/username/django_project_dir/media&gt;</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">&lt;Directory /home/username/django_project_dir/project_dir&gt;</span><br><span class="line">    &lt;Files wsgi.py&gt;</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Files&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">WSGIScriptAlias / /home/username/django_project_dir/django_project/wsgi.py</span><br><span class="line">WSGIDaemonProcess django_app python-path=/home/username/django_project/venv</span><br><span class="line">WSGIProcessGroup django_app</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Enable the site from apache: <code>sudo a2ensite django_project</code></p>
+</li>
+<li><p>Disable the default site: <code>sudo a2dissite 000-default.conf</code></p>
+</li>
+<li><p>Update permission on database and media:</p>
+<ul>
+<li><code>sudo chown :www-data django_project/db.sqlite3</code></li>
+<li><code>sudo chmod 664 django_project/db.sqlite3</code></li>
+<li><code>sudo chown :www-data django_project</code></li>
+</ul>
+</li>
+<li><p>Update permission on the project folder:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R :www-data django_project/</span><br><span class="line">sudo chmod -R 775 django_project/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create config file in <code>/etc</code> called <code>config.json</code> or <code>app_config.json</code></p>
+</li>
+<li><p>Copy the <code>SECRET_KEY</code> from the project <code>settings.py</code> to the <code>app_config.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;SECRET_KEY&quot;: &quot;SOME KEYS&quot;,</span><br><span class="line">    &quot;EMAIL_USER&quot;: &quot;your email username&quot;,</span><br><span class="line">    &quot;EMAIL_PASS&quot;: &quot;your email password&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Update the <code>settings.py</code> with following code to load secret key:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">with open(&apos;/etc/app_config.json&apos;) as config_file:</span><br><span class="line">    config = json.load(config_file)</span><br><span class="line">    </span><br><span class="line">SECRET_KEY = config[&apos;SECRET_KEY&apos;]</span><br><span class="line">DEBUG = False</span><br><span class="line"></span><br><span class="line">EMAIL_HOST_USER = config.get(&apos;EMAIL_USER&apos;)</span><br><span class="line">EMAIL_HOST_PASS = config.get(&apos;EMAIL_PASS&apos;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Update-Traffic-Rules"><a href="#Update-Traffic-Rules" class="headerlink" title="Update Traffic Rules"></a>Update Traffic Rules</h2><ol>
+<li><code>sudo ufw delete allow 8000</code></li>
+<li><code>sudo ufw allow http/tcp</code></li>
+<li>restart apache server: <code>sudo service apache2 restart</code></li>
+</ol>
+<p><a href="https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/" target="_blank" rel="noopener">Deployment checklist</a></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://zhou-en.github.io/2019/10/01/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -650,7 +890,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -676,7 +916,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
