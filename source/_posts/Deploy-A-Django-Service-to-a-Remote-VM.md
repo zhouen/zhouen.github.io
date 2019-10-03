@@ -1,8 +1,9 @@
 ---
 title: Deploy A Django Service to a Remote VM
+description: This is a summary of an article I've read on how to deploy a Django service to a remote server.
 date: 2019-10-02 02:25:54
-tags: ["Django", "Docker", "Container"]
-categories: ["Deployment"]
+tags: [Django, Docker, Container]
+categories: [Deployment]
 ---
 
 ## Create an User on remote VM
