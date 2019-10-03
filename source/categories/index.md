@@ -1,6 +1,4 @@
 ---
-title: Categories
-date: 2019-10-02 02:01:30
-type: "categories"
-comments: false
+title: categories
+date: 2019-10-03 22:43:23
 ---

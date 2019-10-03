@@ -1,7 +1,8 @@
 ---
 title: Deploy A Django Service to a Remote VM
 date: 2019-10-02 02:25:54
-tags: [Django, Deployment]
+tags: ["Django", "Docker", "Container"]
+categories: ["Deployment"]
 ---
 
 ## Create an User on remote VM
