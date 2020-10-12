@@ -1,0 +1,99 @@
+# Install CUDA 8.0 on Linux Mint 20.04
+
+---
+
+[TOC]
+
+<!-- toc -->
+
+- [Install gcc-4.8 for CUDA 8.0](#Install-gcc-48-for-CUDA-80)
+  * [(Optional) Remove old packages and install new ones](#Optional-Remove-old-packages-and-install-new-ones)
+  * [Install `gcc-4.8` and `g++-4.8`](#Install-gcc-48-and-g-48)
+  * [(Optional) After this however, you can only access it with specifically calling for 'gcc-4.8' and 'g++-4.8'. So we set them default](#Optional-After-this-however-you-can-only-access-it-with-specifically-calling-for-gcc-48-and-g-48-So-we-set-them-default)
+  * [In the case of `E: Package 'gcc-4.8' has no installation candidate`](#In-the-case-of-E-Package-gcc-48-has-no-installation-candidate)
+- [Install CUDA 8.0 on Linux Mint 20.04](#Install-CUDA-80-on-Linux-Mint-2004)
+  * [Unpack the `.run` file](#Unpack-the-run-file)
+  * [Copy `InstallUtils.pm`](#Copy-InstallUtilspm)
+  * [Export `PERL5LIB`](#Export-PERL5LIB)
+  * [Install CUDA toolkit](#Install-CUDA-toolkit)
+  * [Install Dependencies](#Install-Dependencies)
+  * [Compile and Run A Simulation](#Compile-and-Run-A-Simulation)
+  * [Install `cupy`](#Install-cupy)
+
+<!-- tocstop -->
+
+## Install gcc-4.8 for CUDA 8.0
+
+### (Optional) Remove old packages and install new ones
+
+```sh
+sudo apt-get remove gcc g++
+```
+
+### Install `gcc-4.8` and `g++-4.8`
+
+```sh
+sudo apt-get install gcc-4.8 g++-4.8 build-essential
+```
+
+### (Optional) After this however, you can only access it with specifically calling for 'gcc-4.8' and 'g++-4.8'. So we set them default
+
+```sh
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 10
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 10
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
+sudo update-alternatives --set cc /usr/bin/gcc
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
+sudo update-alternatives --set c++ /usr/bin/g++
+```
+
+### In the case of `E: Package 'gcc-4.8' has no installation candidate`
+
+- Add `deb http://archive.ubuntu.com/ubuntu trusty main restricted` to `/etc/apt/sources.list`
+- Update teh sources list: `sudo apt update`
+
+## Install CUDA 8.0 on Linux Mint 20.04
+
+### Unpack the `.run` file
+
+```sh
+./cuda*.run --tar mxvf
+```
+
+### Copy `InstallUtils.pm`
+
+```sh
+sudo cp InstallUtils.pm /usr/lib/x86_64-linux-gnu/perl-base
+```
+
+### Export `PERL5LIB`
+
+```sh
+export $PERL5LIB
+```
+
+### Install CUDA toolkit
+
+```sh
+sudo ./cuda_8.0.61_375.26_linux.run --override
+```
+
+### Install Dependencies
+
+```sh
+sudo apt-get install freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libgl1-mesa-glx libglu1-mesa libglu1-mesa-dev libglfw3-dev libgles2-mesa-dev
+```
+
+### Compile and Run A Simulation
+
+```sh
+cd ~/NVIDIA_CUDA-8.0_Samples/5_Simulations/nbody
+GLPATH=/usr/lib make
+./nbody
+```
+
+### Install `cupy`
+Since the CUDA version installed is 8.0,
+```sh
+pip install cupy-cuda80
+```
