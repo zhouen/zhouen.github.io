@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Hello World
+date: 2019-12-12
 tags: ["Hexo"]
 categories: ["Quick Start"]
 ---
