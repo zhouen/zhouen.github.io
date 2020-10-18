@@ -10,8 +10,8 @@ const moment = require('moment');
 // 配置信息
 const config = {
   username: 'zhou-en', // GitHub repository 所有者，可以是个人或者组织。对应Gitalk配置中的owner
-  repo: 'blog-github', // 储存评论issue的github仓库名，仅需要仓库名字即可。对应 Gitalk配置中的repo
-  token: '7eefbc7bb9b4e42d0f30031b39358008c285c511', // 前面申请的 personal access token
+  repo: 'blog-comments', // 储存评论issue的github仓库名，仅需要仓库名字即可。对应 Gitalk配置中的repo
+  token: '8cd0f89ca1c01cd9529d2ea9678b43690b559a5a', // 前面申请的 personal access token
   sitemap: path.join(__dirname, './public/sitemap.xml'), // 自己站点的 sitemap 文件地址
   cache: true, // 是否启用缓存，启用缓存会将已经初始化的数据写入配置的 gitalkCacheFile 文件，下一次直接通过缓存文件判断
   gitalkCacheFile: path.join(__dirname, './gitalk-init-cache.json'), // 用于保存 gitalk 已经初始化的 id 列表
@@ -72,14 +72,17 @@ const getGitalkId = ({
     return false;
   }
   // 如果不是文章链接，则不需要初始化
-  console.log( moment(date - 0).format('YYYYMMDD') + '-' + md5(link.pathname));
-  // if (!/\/(\d{4})-(\d{2})-(\d{2})\//.test(link.pathname)) {
-  //   return false;
-  // }
+  // console.log(link.pathname);
+  // console.log( moment(date - 0).format('YYYYMMDD') + '-' + md5(link.pathname));
+    // if (!/\/(\d{4})-(\d{2})-(\d{2})\//.test(link.pathname)) {
+    //   return false;
+    // }
   if (!date) {
     return false;
   }
-  return moment(date - 0).format('YYYYMMDD') + '-' + md5(link.pathname);
+  // return moment(date - 0).format('YYYYMMDD') + '-' + md5(link.pathname);
+  // md5 is what github used for labels
+  return md5(link.pathname);
 };
 
 /**
@@ -88,6 +91,7 @@ const getGitalkId = ({
 * @return {[boolean, boolean]} 第一个值表示是否出错，第二个值 false 表示没初始化， true 表示已经初始化
 */
 const getIsInitByRequest = (id) => {
+  console.log(id);
   const options = {
     headers: {
       'Authorization': 'token ' + config.token,
@@ -161,7 +165,8 @@ const gitalkInit = ({
   //创建issue
   const reqBody = {
     'title': title,
-    'labels': ['Gitalk', id],
+    'assignees': ['zhou-en'],
+    'labels': ['Gitalk', 'Blog', id],
     'body': url + '\r\n\r\n' + desc
   };
 
