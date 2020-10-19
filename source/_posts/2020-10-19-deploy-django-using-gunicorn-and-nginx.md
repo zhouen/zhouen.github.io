@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2020-10-19-deploy-django-using-gunicorn-and-nginx
+title: Deploy Django Using Gunicorn and Nginx
 date: 2020-10-19 02:06:15
 tags: ["Django", "Deploy", "Nginx", "Gunicorn"]
 categories: ["DevOps"]
