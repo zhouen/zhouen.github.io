@@ -2,6 +2,7 @@
 layout: post
 title: "Enable Sublime Text in Tmux Command Line on MacOS"
 date: 2018-07-12
+sitemap: true
 tags: [Sublime]
 categories: ["Text Editor", "IDE"]
 ---
