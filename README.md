@@ -25,7 +25,7 @@ git pull
 # make a backup
 cp theme/next/_config.yml theme/next/_config_bak.yml
 rm theme/next/_config.yml
-ln -s ./_next_theme_config.yml theme/next/_config.yml
+cp ./_next_theme_config.yml theme/next/_config.yml
 ```
 
 ## Add A New Post
