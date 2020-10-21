@@ -64,7 +64,7 @@ hexo init
     ```yml
     deploy:
         type: git
-        repo: git@github.com:zhou-en/zhou-en.github.io.git
+        repo: your_repo_address
         branch: master
         message: 'Blog site was updated!'
     ```
