@@ -17,7 +17,7 @@ Unable to launch sublime text
 ```
 
 This is due to tmux doesn't have root access to the bin directory. The following steps fixed this issue for me on my Mac.
-
+<!-- more -->
 ## System Details and Application
 
 * OS:

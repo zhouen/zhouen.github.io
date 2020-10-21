@@ -17,7 +17,7 @@ $ virtualenv --no-site-packages venv
 $ source venv/bin/activate
 $ pip install python-gnupg
 ```
-
+<!-- more -->
 ## Importing and receiving keys
 ```python
 import gnupg

@@ -10,7 +10,7 @@ tags: [Python, Datetime]
 ### Python Date Time Libries: `pytz`, `dateutil`, and `pendulum`
 
 Write a few paragraphs on converting UTC datetime to localized timezone datetime using the 3 libraries.
-
+<!-- more -->
 ```python
 import datetime
 from datetime import timedelta

@@ -11,7 +11,7 @@ categories: ["DevOps"]
 ```sh
 sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx
 ```
-
+<!-- more -->
 ## Create the PostgreSQL Database and User
 
 ```sh
