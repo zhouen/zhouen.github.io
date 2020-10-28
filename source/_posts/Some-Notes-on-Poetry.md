@@ -12,7 +12,7 @@ tags: python
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 ```
 REF: [https://python-poetry.org/docs/#installation](https://python-poetry.org/docs/#installation)
-
+<!-- more -->
 ## Error when starting `poetry shell`
 ```sh
 ModuleNotFoundError: No module named 'virtualenv.seed.via_app_data'
