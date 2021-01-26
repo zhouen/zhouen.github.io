@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://zhou-en.github.io/about/index.html</loc>
+    
+    <lastmod>2021-01-26T22:23:54.197Z</lastmod>
+    
+    <date>1569975605000</date>
+    <title>About Me | En's Blog</title>
+    
+    <desc></desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/2019/12/12/hello-world/</loc>
+    
+    <lastmod>2021-01-26T21:21:55.563Z</lastmod>
+    
+    <date>1576101600000</date>
+    <title>Hello World | En's Blog</title>
+    
+    <desc>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.</desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/2019/10/02/Python-Datetime-Libs/</loc>
+    
+    <lastmod>2021-01-26T21:21:55.562Z</lastmod>
+    
+    <date>1569976797000</date>
+    <title>Python Datetime Libs | En's Blog</title>
+    
+    <desc>This was a tech spike I did for investigating the 3 datetime libraries we were interested in a project.</desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/2020/10/19/2020-10-19-deploy-django-using-gunicorn-and-nginx/</loc>
+    
+    <lastmod>2021-01-26T21:21:55.561Z</lastmod>
+    
+    <date>1603065975000</date>
+    <title>Deploy Django Using Gunicorn and Nginx | En's Blog</title>
+    
+    <desc>Install Packages from the Ubuntu Repositories for Python 31sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx</desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/2018/07/12/2018-07-12-Enable-Sublime-Text-in-Tmux-Command-Line-on-MacOS/</loc>
+    
+    <lastmod>2021-01-26T21:21:55.560Z</lastmod>
+    
+    <date>1531346400000</date>
+    <title>Enable Sublime Text in Tmux Command Line on MacOS | En's Blog</title>
+    
+    <desc>Problem DescriptionWhen you create a symbolic link to start sublime text editor from command line in tmux, you get an error message: 1Unable to launch sublime text This is due to tmux doesn’t have roo</desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/2017/08/25/2017-08-25-ZhouEn-site-launched/</loc>
+    
+    <lastmod>2021-01-26T21:21:55.559Z</lastmod>
+    
+    <date>1503612000000</date>
+    <title>En Zhou Launches Site | En's Blog</title>
+    
+    <desc>Well. Finally got around to putting this old website together. Neat thing about it - powered by Jekyll and I can use Markdown to author my posts. It actually is a lot easier than I thought it was goin</desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/404.html</loc>
+    
+    <lastmod>2020-10-19T12:32:01.066Z</lastmod>
+    
+    <date>1603110721066</date>
+    <title>404 | En's Blog</title>
+    
+    <desc></desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-10-12T09:37:34.183Z</lastmod>
+    
+    <date>1570135398000</date>
+    <title>Tags | En's Blog</title>
+    
+    <desc></desc>
+  </url>
+  
+  <url>
+    <loc>http://zhou-en.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-10-12T09:37:34.182Z</lastmod>
+    
+    <date>1570135403000</date>
+    <title>Categories | En's Blog</title>
+    
+    <desc></desc>
+  </url>
+  
+</urlset>
